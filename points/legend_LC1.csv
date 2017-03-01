@@ -1,0 +1,66 @@
+LC1,Label,AGGR_LC1
+A11,Buildings with 1 to 3 floors,Urban
+A12,Buildings with more than 3 floors,Urban
+A13,Greenhouses     ,Urban
+A21,Non Built up area features ,Urban
+A22,Non built up linear features ,Urban
+B11,Common wheat    ,Arable land
+B12,Durum wheat    ,Arable land
+B13,Barley     ,Arable land
+B14,Rye     ,Arable land
+B15,Oats     ,Arable land
+B16,Maize     ,Arable land
+B17,Rice     ,Arable land
+B18,Triticale     ,Arable land
+B19,Other cereals    ,Arable land
+B21,Potatoes     ,Arable land
+B22,Sugar beet    ,Arable land
+B23,Other root crops   ,Arable land
+B31,Sunflower     ,Arable land
+B32,Rape and turnip seeds  ,Arable land
+B33,Soya     ,Arable land
+B34,Cotton     ,Arable land
+B35,Other fibre and oleaginous crops ,Arable land
+B36,Tobacco     ,Arable land
+B37,Other non-permanent industrial crops  ,Arable land
+B41,Dry pulses    ,Arable land
+B42,Tomatoes     ,Arable land
+B43,Other fresh vegetables   ,Arable land
+B44,Floriculture and ornamental plants  ,Arable land
+B45,Strawberries     ,Arable land
+B51,Clovers     ,Arable land
+B52,Lucerne     ,Arable land
+B53,Other legumes and mixtures for fodder,Arable land
+B54,Mixed cereals for fodder  ,Arable land
+B55,Temporary grasslands    ,Grassland
+B71,Apple fruit    ,Arable land
+B72,Pear fruit    ,Arable land
+B73,Cherry fruit    ,Arable land
+B74,Nuts trees    ,Arable land
+B75,Other fruit trees and berries ,Arable land
+B76,Oranges     ,Arable land
+B77,Other citrus fruit   ,Arable land
+B81,Olive groves    ,Arable land
+B82,Vineyards     ,Arable land
+B83,Nurseries     ,Arable land
+B84,Permanent industrial crops   ,Arable land
+BX1,Arable land (only in case PI),Arable land
+BX2,Permanent crops (only in case PI),Arable land
+C10,Broadleaved forest    ,Nature
+C20,Coniferous forest    ,Nature
+C30,Mixed forest    ,Nature
+D10,Shrubland with sparse tree cover ,Nature
+D20,Shrubland without tree cover  ,Nature
+E10,Grassland with sparse tree/shrub cover ,Grassland
+E20,Grassland without tree/shrub cover  ,Grassland
+E30,Spontaneously vegetated surfaces   ,Nature
+F00,Bare land    ,
+G10,Inland water bodies   ,
+G20,Inland running water   ,
+G30,Coastal water bodies   ,
+G50,"Glaciers, permanent snow   ",
+H11,Inland marshes    ,
+H12,Peat bogs    ,Nature
+H21,Salt marshes    ,
+H22,Salines     ,
+H23,Intertidal flats    ,
