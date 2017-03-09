@@ -15,7 +15,8 @@ str(profs)
 plyr:::nunique(profs$ID)
 
 ## rename columns:
-profs <- plyr::rename(profs, c("ID"="SOURCEID", "clay"="CLYPPT", "silt"="SLTPPT", "pH_CaCl2"="PHICAL", "TOC"="ORCDRC", "YCOO"="LATWGS84", "XCOO"="LONWGS84", "CEC"="CECSUM"))
+profs <- plyr::rename(profs, c("clay"="CLYPPT", "silt"="SLTPPT", "pH_CaCl2"="PHICAL", "TOC"="ORCDRC", "YCOO"="LATWGS84", "XCOO"="LONWGS84", "CEC"="CECSUM"))
+profs$SOURCEID = paste("GEMAS",profs$ID,sep="_")
 str(profs)
 
 ## check / convert values where necessary
@@ -44,3 +45,5 @@ str(SPROPS.GEMAS)
 save(SPROPS.GEMAS, file="SPROPS.GEMAS.rda")
 plot(SPROPS.GEMAS$LONWGS84, SPROPS.GEMAS$LATWGS84, pch="+")
 saveRDS(profs.f[,c("SOURCEID","SAMPLEID","SOURCEDB","LONWGS84","LATWGS84","TIMESTRR","UHDICM","LHDICM","DEPTH","SNDPPT","CLYPPT","SLTPPT","PHICAL","ORCDRC","CECSUM","As", "Cd", "Cu", "Pb", "Zn")], file="pnts_GEMAS.rds")
+save.image()
+

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SAGA_METADATA>
+  <HISTORY saga-version="3.1.0">
+    <TOOL library="shapes_grid" id="2" name="Grid Statistics for Polygons">
+      <OPTION type="grid_system" id="PARAMETERS_GRID_SYSTEM" name="Grid system">
+        <CELLSIZE>1000</CELLSIZE>
+        <XMIN>857500</XMIN>
+        <XMAX>7406500</XMAX>
+        <YMIN>855500</YMIN>
+        <YMAX>5437500</YMAX>
+      </OPTION>
+      <OPTION type="choice" id="NAMING" name="Field Naming" index="1">grid name</OPTION>
+      <OPTION type="choice" id="METHOD" name="Method" index="0">simple and fast</OPTION>
+      <OPTION type="boolean" id="COUNT" name="Number of Cells">TRUE</OPTION>
+      <OPTION type="boolean" id="MIN" name="Minimum">TRUE</OPTION>
+      <OPTION type="boolean" id="MAX" name="Maximum">TRUE</OPTION>
+      <OPTION type="boolean" id="RANGE" name="Range">TRUE</OPTION>
+      <OPTION type="boolean" id="SUM" name="Sum">TRUE</OPTION>
+      <OPTION type="boolean" id="MEAN" name="Mean">TRUE</OPTION>
+      <OPTION type="boolean" id="VAR" name="Variance">TRUE</OPTION>
+      <OPTION type="boolean" id="STDDEV" name="Standard Deviation">TRUE</OPTION>
+      <OPTION type="integer" id="QUANTILE" name="Quantile">0</OPTION>
+      <INPUT_LIST type="grid_list" id="GRIDS" name="Grids" system="PARAMETERS_GRID_SYSTEM">
+        <INPUT type="grid_list" id="GRIDS" name="Grids" system="PARAMETERS_GRID_SYSTEM">
+          <FILE>g100_clc12_V18_5.sgrd</FILE>
+        </INPUT>
+      </INPUT_LIST>
+      <INPUT type="shapes" id="POLYGONS" name="Polygons">
+        <FILE>tiles200km.shp</FILE>
+      </INPUT>
+      <OUTPUT type="shapes" id="RESULT" name="Statistics">tiles200km [Grid Statistics]</OUTPUT>
+    </TOOL>
+  </HISTORY>
+  <SOURCE>
+    <FILE></FILE>
+    <DATABASE>
+      <FIELDS>
+        <FIELD TYPE="DOUBLE">xl</FIELD>
+        <FIELD TYPE="DOUBLE">yl</FIELD>
+        <FIELD TYPE="DOUBLE">xu</FIELD>
+        <FIELD TYPE="DOUBLE">yu</FIELD>
+        <FIELD TYPE="DOUBLE">offst_y</FIELD>
+        <FIELD TYPE="DOUBLE">offst_x</FIELD>
+        <FIELD TYPE="DOUBLE">rgn_dm_y</FIELD>
+        <FIELD TYPE="DOUBLE">rgn_dm_x</FIELD>
+        <FIELD TYPE="STRING">ID</FIELD>
+        <FIELD TYPE="INTEGER">g100_clc12_V18_5 [CELLS]</FIELD>
+        <FIELD TYPE="DOUBLE">g100_clc12_V18_5 [MIN]</FIELD>
+        <FIELD TYPE="DOUBLE">g100_clc12_V18_5 [MAX]</FIELD>
+        <FIELD TYPE="DOUBLE">g100_clc12_V18_5 [RANGE]</FIELD>
+        <FIELD TYPE="DOUBLE">g100_clc12_V18_5 [SUM]</FIELD>
+        <FIELD TYPE="DOUBLE">g100_clc12_V18_5 [MEAN]</FIELD>
+        <FIELD TYPE="DOUBLE">g100_clc12_V18_5 [VARIANCE]</FIELD>
+        <FIELD TYPE="DOUBLE">g100_clc12_V18_5 [STDDEV]</FIELD>
+      </FIELDS>
+    </DATABASE>
+    <PROJECTION></PROJECTION>
+  </SOURCE>
+  <DESCRIPTION></DESCRIPTION>
+</SAGA_METADATA>
