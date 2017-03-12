@@ -412,3 +412,36 @@ m@data[,"x"] = readGDAL("./stacked1km/g100_clc12_V18_5.tif")$band1
 m$CLC = join(data.frame(GRID_CODE=m$x), LC1.cor, match="first")$AGGR_LC1
 sum.pH = plyr::ddply(m@data, .(CLC), summarize, pH_mean=mean(band1, na.rm=TRUE)/10, pH_sd=sqrt(var(band1/10, na.rm=TRUE)))
 
+library(plotKML)
+#plot.vars = c("PHIHOX_topsoil_1km", "ORCDRC_topsoil_1km", "CLYPPT_topsoil_1km")
+plot.vars = c("PHIHOX_topsoil_1km", "CLYPPT_topsoil_1km", "log_Zn_topsoil_1km")
+#names.plot = c("soil pH in H2O", "soil organic C (g/kg)", "clay content (w%)")
+names.plot = c("soil pH in H2O", "clay content (w%)", "Zinc (ppm)")
+#pal.lst = list(R_pal[["pH_pal"]], SAGA_pal[[1]][6:20], SAGA_pal[[2]])
+pal.lst = list(R_pal[["pH_pal"]], SAGA_pal[[2]], SAGA_pal[[1]][6:20])
+for(j in plot.vars){ system(paste0('gdalwarp /data/Integrator/output/', j, '.tif ', gsub("1km", "1km_xy.tif", j), ' -s_srs \"+init=epsg:3035\" -t_srs \"+init=epsg:3857\" -tr 2500 2500 -co \"COMPRESS=DEFLATE\"')) }
+g1km = raster::stack(paste0(plot.vars, "_xy.tif"))
+g1km = as(g1km, "SpatialGridDataFrame")
+names(g1km)
+#proj4string(g1km) = CRS("+init=epsg:3035")
+## plot some predictions using leaflet:
+library(leaflet)
+library(raster)
+library(htmlwidgets)
+## macro-nutrients
+for(j in 1:length(plot.vars)){
+  if(!file.exists(paste0(paste0(plot.vars[j],"_xy"), "_1km.html"))){
+    xr = quantile(g1km@data[,paste0(plot.vars[j],"_xy")], c(0.05,0.95), na.rm=TRUE)
+    g1km$fix <- ifelse(g1km@data[,paste0(plot.vars[j],"_xy")]<=xr[1], xr[1], ifelse(g1km@data[,paste0(plot.vars[j],"_xy")]>=xr[2], xr[2], g1km@data[,paste0(plot.vars[j],"_xy")]))
+    if(length(grep("log_", plot.vars[j]))>0){
+      g1km$fix <- expm1(g1km$fix/100)
+      xr = range(g1km$fix, na.rm = TRUE)
+    }
+    #r = projectRaster(raster(g1km["fix"]), res=1000, crs=CRS("+init=epsg:3857"), method="ngb")
+    r = raster(g1km["fix"])
+    pal <- colorNumeric(pal.lst[[j]], values(r), na.color = "transparent")
+    m <- leaflet() %>% addTiles() %>% addRasterImage(r, colors=pal, opacity=0.6, project=FALSE, maxBytes = 8 * 1024 * 1024) %>% addLegend(pal=pal, values=values(r), title=names.plot[j])
+    saveWidget(m, file=paste0(plot.vars[j], "_1km.html"))
+  }
+}
+
